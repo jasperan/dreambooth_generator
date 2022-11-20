@@ -1,3 +1,4 @@
+pip install git+https://github.com/huggingface/diffusers
 diffusers>==0.5.0
 accelerate
 torchvision
@@ -5,4 +6,4 @@ transformers>=4.21.0
 ftfy
 tensorboard
 modelcards
-pytorch-lightning
+accelerate
