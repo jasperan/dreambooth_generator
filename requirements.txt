@@ -1,3 +1,4 @@
+deepspeed
 pip install git+https://github.com/huggingface/diffusers
 diffusers>==0.5.0
 accelerate
@@ -7,3 +8,4 @@ ftfy
 tensorboard
 modelcards
 accelerate
+triton
