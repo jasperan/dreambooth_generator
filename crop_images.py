@@ -16,6 +16,7 @@ while IMAGES_FOLDER_OPTIONAL !="" and not os.path.exists(str(IMAGES_FOLDER_OPTIO
 
 if IMAGES_FOLDER_OPTIONAL!="":
       for filename in os.listdir(IMAGES_FOLDER_OPTIONAL):
+        print('Scaling down {}...'.format(filename))
         extension = filename.split(".")[1]
         identifier=filename.split(".")[0]
         new_path_with_file = os.path.join(IMAGES_FOLDER_OPTIONAL, filename)
@@ -28,10 +29,14 @@ if IMAGES_FOLDER_OPTIONAL!="":
         bottom = (height + side_length)/2
         image = file.crop((left, top, right, bottom))
         image = image.resize((Crop_size, Crop_size))
-        if (extension.upper() == "JPG"):
-            image.save(new_path_with_file, format="JPEG", quality = 100)
-        else:
-            image.save(new_path_with_file, format=extension.upper())
+        try:
+            if (extension.upper() == "JPG"):
+                image.save(new_path_with_file, format="JPEG", quality = 100)
+            else:
+                image.save(new_path_with_file, format=extension.upper())
+        finally:
+            print('Saved cropped image {}'.format(filename))
+
 
 
 print('Done, proceed to training')
